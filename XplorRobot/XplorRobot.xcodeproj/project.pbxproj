@@ -14,6 +14,7 @@
 		A3210569252DCE3900570876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3210568252DCE3900570876 /* Assets.xcassets */; };
 		A321056C252DCE3900570876 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A321056A252DCE3900570876 /* LaunchScreen.storyboard */; };
 		A3210577252DCE3900570876 /* XplorRobotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3210576252DCE3900570876 /* XplorRobotTests.swift */; };
+		A3C47BDA252F3B3D007811BA /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C47BD9252F3B3D007811BA /* Robot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		A3210572252DCE3900570876 /* XplorRobotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XplorRobotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3210576252DCE3900570876 /* XplorRobotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XplorRobotTests.swift; sourceTree = "<group>"; };
 		A3210578252DCE3900570876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3C47BD9252F3B3D007811BA /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				A3210568252DCE3900570876 /* Assets.xcassets */,
 				A321056A252DCE3900570876 /* LaunchScreen.storyboard */,
 				A321056D252DCE3900570876 /* Info.plist */,
+				A3C47BD9252F3B3D007811BA /* Robot.swift */,
 			);
 			path = XplorRobot;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3C47BDA252F3B3D007811BA /* Robot.swift in Sources */,
 				A3210564252DCE3600570876 /* ViewController.swift in Sources */,
 				A3210560252DCE3600570876 /* AppDelegate.swift in Sources */,
 				A3210562252DCE3600570876 /* SceneDelegate.swift in Sources */,
