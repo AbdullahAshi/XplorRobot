@@ -70,19 +70,11 @@ extension Robot {
     return nil
   }
   
-  func increment(x: Int) -> Int {
+  func incrementUptoMax(value: Int, max: Int) -> Int {
     return 0
   }
   
-  func decrement(x: Int) -> Int {
-    return 0
-  }
-  
-  func increment(y: Int) -> Int {
-    return 0
-  }
-  
-  func decrement(y: Int) -> Int {
+  func decrementDowntoMin(value: Int, min: Int = 0) -> Int {
     return 0
   }
 }
