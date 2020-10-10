@@ -60,16 +60,16 @@ extension Robot {
   }
   
   //movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
-  func move(currentPlace: RobotPlace?, currentFacing: RobotFacing, max: Int) -> RobotPlace? {
-    return nil
+  func move(currentPlace: RobotPlace, currentFacing: RobotFacing, max: Int) -> RobotPlace {
+    return (0,0)
   }
   
-  func rotateLeft(currentFacing: RobotFacing) -> RobotFacing? {
-    return nil
+  func rotateLeft(currentFacing: RobotFacing) -> RobotFacing {
+    return .north
   }
   
-  func rotateRight(currentFacing: RobotFacing) -> RobotFacing? {
-    return nil
+  func rotateRight(currentFacing: RobotFacing) -> RobotFacing {
+    return .north
   }
 }
 
