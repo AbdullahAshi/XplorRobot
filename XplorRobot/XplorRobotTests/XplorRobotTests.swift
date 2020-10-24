@@ -11,7 +11,7 @@ import XCTest
 
 class XplorRobotTests: XCTestCase {
   
-  let robot = Robot()
+  let robot = Robot(board: Board(dimensions: 5))
   
   override func setUpWithError() throws {
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,7 +27,7 @@ class XplorRobotTests: XCTestCase {
     var expectedOutput: RobotPlaceFacing? = nil
     
     expectedOutput = (3,4, .north)
-    var commandRobot = Robot()
+    var commandRobot = Robot(board: Board(dimensions: 5))
     commandRobot.command([.left, .left, .right, .move, .place((3,3, .north)), .move])
     output = commandRobot.report()
     XCTAssertEqual(expectedOutput?.0, output?.0)
@@ -35,7 +35,7 @@ class XplorRobotTests: XCTestCase {
     XCTAssertEqual(expectedOutput?.2, output?.2)
     
     //no invalid place provided
-    commandRobot = Robot()
+    commandRobot = Robot(board: Board(dimensions: 5))
     commandRobot.command([.left, .left, .right, .move, .place((6,7, .north)), .move])
     output = commandRobot.report()
     XCTAssertNil(output)
@@ -43,7 +43,7 @@ class XplorRobotTests: XCTestCase {
     //requirments test
     //PLACE 0,0,NORTH MOVE REPORT Output: 0,1,NORTH
     expectedOutput = (0,1, .north)
-    commandRobot = Robot()
+    commandRobot = Robot(board: Board(dimensions: 5))
     commandRobot.command([.place((0,0, .north)), .move])
     output = commandRobot.report()
     XCTAssertEqual(expectedOutput?.0, output?.0)
@@ -53,7 +53,7 @@ class XplorRobotTests: XCTestCase {
     //requirments test
     //PLACE 0,0,NORTH LEFT REPORT Output: 0,0,WEST
     expectedOutput = (0,0, .west)
-    commandRobot = Robot()
+    commandRobot = Robot(board: Board(dimensions: 5))
     commandRobot.command([.place((0,0, .north)), .left, .move])
     output = commandRobot.report()
     XCTAssertEqual(expectedOutput?.0, output?.0)
@@ -63,7 +63,7 @@ class XplorRobotTests: XCTestCase {
     //requirments test
     //PLACE 1,2,EAST MOVE MOVE LEFT MOVE REPORT Output: 3,3,NORTH
     expectedOutput = (3,3, .north)
-    commandRobot = Robot()
+    commandRobot = Robot(board: Board(dimensions: 5))
     commandRobot.command([.place((1,2, .east)), .move, .move, .left, .move])
     output = commandRobot.report()
     XCTAssertEqual(expectedOutput?.0, output?.0)
@@ -161,7 +161,7 @@ class XplorRobotTests: XCTestCase {
   }
   
   func testReport() {
-    let newRobot = Robot()
+    let newRobot = Robot(board: Board(dimensions: 5))
     
     //assert unplaced robot report is nil
     XCTAssertNil(newRobot.report())

@@ -24,17 +24,21 @@ class Robot {
     case left
     case right
     case move
+    case block([RobotPlace])
   }
 
-  private var dimensions: Int
+  private let board: Board
+  private var dimensions: Int {
+    return board.dimensions
+  }
   private var currentFacing: RobotFacing = .north
   private var currentPlace: RobotPlace?
   var maxIndex: Int {
     return dimensions - 1
   }
   
-  init(dimensions: Int = 5) {
-    self.dimensions = dimensions
+  init(board: Board) {
+    self.board = board
   }
 }
 
@@ -59,8 +63,11 @@ extension Robot: RobotProtocol {
         currentFacing = rotateRight(currentFacing: currentFacing)
       case .move:
         guard let currentPlace = currentPlace else { continue }
-        let robotPlace = move(currentPlace: currentPlace, currentFacing: currentFacing, max: maxIndex)
+        let robotPlace = moveIfValid(currentPlace: currentPlace, currentFacing: currentFacing, max: maxIndex, blocker: board.blocker)
         self.currentPlace = robotPlace
+      case .block(let newBlockers):
+        guard currentPlace != nil else { continue }
+        board.setBlockers(newBlockers)
       }
     }
   }
@@ -78,6 +85,16 @@ extension Robot {
     guard place.0 >= 0, place.1 >= 0 else { return nil }
     
     return (place.0, place.1, facing)
+  }
+  
+  func moveIfValid(currentPlace: RobotPlace, currentFacing: RobotFacing, max: Int, blocker: [(Int, Int)]) -> RobotPlace? {
+    let placeToBe = move(currentPlace: currentPlace, currentFacing: currentFacing, max: max)
+    for block in blocker {
+      if (placeToBe.0 == block.0) && (placeToBe.1 == block.1) {
+        return nil
+      }
+    }
+    return placeToBe
   }
   
   //movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
@@ -132,3 +149,10 @@ extension Robot {
     return max(value - 1, 0)
   }
 }
+
+
+//block x y , igonred if not applicable
+
+// create board object + blocker (done)
+// expose board blocker (done)
+//adopt to thos blockers
